@@ -1,0 +1,33 @@
+﻿@model Project.Models.Participate
+
+@{
+
+    ViewBag.Title = "Delete Tag";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="dlt-container">
+                <div class="dlt-paper-info">
+                 
+                </div>
+                <div class="dlt-info">
+                    <h2 style="color:white;">Are you sure you want to delete the paper ?</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn-dlt" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+</html>

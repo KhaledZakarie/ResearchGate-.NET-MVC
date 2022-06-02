@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AuthorDBModelStoreContainer" CdmEntityContainer="DBModels">
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="AuthorDBModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="University" ColumnName="University" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Passward" ColumnName="Passward" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Papers">
+      <EntityTypeMapping TypeName="AuthorDBModel.Paper">
+        <MappingFragment StoreEntitySet="Paper">
+          <ScalarProperty Name="PaperFile" ColumnName="PaperFile" />
+          <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+          <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+          <ScalarProperty Name="PaperName" ColumnName="PaperName" />
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participates">
+      <EntityTypeMapping TypeName="AuthorDBModel.Participate">
+        <MappingFragment StoreEntitySet="Participate">
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+          <ScalarProperty Name="PId" ColumnName="PId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LikeDBs">
+      <EntityTypeMapping TypeName="AuthorDBModel.LikeDB">
+        <MappingFragment StoreEntitySet="LikeDB">
+          <ScalarProperty Name="LikeP" ColumnName="LikeP" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+          <ScalarProperty Name="AId" ColumnName="AId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentDBs">
+      <EntityTypeMapping TypeName="AuthorDBModel.CommentDB">
+        <MappingFragment StoreEntitySet="CommentDB">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+          <ScalarProperty Name="AId" ColumnName="AId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

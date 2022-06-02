@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AuthorDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="bigint" />
+          <Property Name="University" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passward" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CommentDB">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="ActionDate" Type="date" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LikeDB">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="ActionDate" Type="date" />
+          <Property Name="LikeP" Type="bit" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PublisherId" Type="int" />
+          <Property Name="PublishDate" Type="date" />
+          <Property Name="PaperFile" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Participate">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="StartDate" Type="date" />
+        </EntityType>
+        <Association Name="a1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C0">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="CommentDB" Type="Self.CommentDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="CommentDB">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="CommentDB" Type="Self.CommentDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommentDB">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="L0">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="LikeDB" Type="Self.LikeDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="LikeDB">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="L1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="LikeDB" Type="Self.LikeDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikeDB">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="P0">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Participate">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="P1">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participate">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AuthorDBModelStoreContainer">
+          <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentDB" EntityType="Self.CommentDB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeDB" EntityType="Self.LikeDB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paper" EntityType="Self.Paper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participate" EntityType="Self.Participate" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="a1" Association="Self.a1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="C0" Association="Self.C0">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="CommentDB" EntitySet="CommentDB" />
+          </AssociationSet>
+          <AssociationSet Name="C1" Association="Self.C1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="CommentDB" EntitySet="CommentDB" />
+          </AssociationSet>
+          <AssociationSet Name="L0" Association="Self.L0">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="LikeDB" EntitySet="LikeDB" />
+          </AssociationSet>
+          <AssociationSet Name="L1" Association="Self.L1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="LikeDB" EntitySet="LikeDB" />
+          </AssociationSet>
+          <AssociationSet Name="P0" Association="Self.P0">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Participate" EntitySet="Participate" />
+          </AssociationSet>
+          <AssociationSet Name="P1" Association="Self.P1">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Participate" EntitySet="Participate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AuthorDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="Int64" />
+          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Papers" Relationship="AuthorDBModel.a1" FromRole="Author" ToRole="Paper" />
+          <NavigationProperty Name="Participates" Relationship="AuthorDBModel.P1" FromRole="Author" ToRole="Participate" />
+          <NavigationProperty Name="LikeDBs" Relationship="AuthorDBModel.L1" FromRole="Author" ToRole="LikeDB" />
+          <NavigationProperty Name="CommentDBs" Relationship="AuthorDBModel.C1" FromRole="Author" ToRole="CommentDB" />
+        </EntityType>
+        <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="Self.Author" />
+          <EntitySet Name="Papers" EntityType="AuthorDBModel.Paper" />
+          <AssociationSet Name="a1" Association="AuthorDBModel.a1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Paper" EntitySet="Papers" />
+          </AssociationSet>
+          <EntitySet Name="Participates" EntityType="AuthorDBModel.Participate" />
+          <AssociationSet Name="P1" Association="AuthorDBModel.P1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Participate" EntitySet="Participates" />
+          </AssociationSet>
+          <AssociationSet Name="P0" Association="AuthorDBModel.P0">
+            <End Role="Paper" EntitySet="Papers" />
+            <End Role="Participate" EntitySet="Participates" />
+          </AssociationSet>
+          <EntitySet Name="LikeDBs" EntityType="AuthorDBModel.LikeDB" />
+          <AssociationSet Name="L1" Association="AuthorDBModel.L1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="LikeDB" EntitySet="LikeDBs" />
+          </AssociationSet>
+          <AssociationSet Name="L0" Association="AuthorDBModel.L0">
+            <End Role="Paper" EntitySet="Papers" />
+            <End Role="LikeDB" EntitySet="LikeDBs" />
+          </AssociationSet>
+          <EntitySet Name="CommentDBs" EntityType="AuthorDBModel.CommentDB" />
+          <AssociationSet Name="C1" Association="AuthorDBModel.C1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="CommentDB" EntitySet="CommentDBs" />
+          </AssociationSet>
+          <AssociationSet Name="C0" Association="AuthorDBModel.C0">
+            <End Role="Paper" EntitySet="Papers" />
+            <End Role="CommentDB" EntitySet="CommentDBs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PublisherId" Type="Int32" />
+          <Property Name="PublishDate" Type="DateTime" Precision="0" />
+          <Property Name="PaperFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Author" Relationship="AuthorDBModel.a1" FromRole="Paper" ToRole="Author" />
+          <NavigationProperty Name="Participates" Relationship="AuthorDBModel.P0" FromRole="Paper" ToRole="Participate" />
+          <NavigationProperty Name="LikeDBs" Relationship="AuthorDBModel.L0" FromRole="Paper" ToRole="LikeDB" />
+          <NavigationProperty Name="CommentDBs" Relationship="AuthorDBModel.C0" FromRole="Paper" ToRole="CommentDB" />
+        </EntityType>
+        <Association Name="a1">
+          <End Type="AuthorDBModel.Author" Role="Author" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AuthorDBModel.Paper" Role="Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="PublisherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Participate">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperId" Type="Int32" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Author" Relationship="AuthorDBModel.P1" FromRole="Participate" ToRole="Author" />
+          <NavigationProperty Name="Paper" Relationship="AuthorDBModel.P0" FromRole="Participate" ToRole="Paper" />
+        </EntityType>
+        <Association Name="P1">
+          <End Type="AuthorDBModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="AuthorDBModel.Participate" Role="Participate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participate">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="P0">
+          <End Type="AuthorDBModel.Paper" Role="Paper" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AuthorDBModel.Participate" Role="Participate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Participate">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LikeDB">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperId" Type="Int32" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="ActionDate" Type="DateTime" Precision="0" />
+          <Property Name="LikeP" Type="Boolean" />
+          <NavigationProperty Name="Author" Relationship="AuthorDBModel.L1" FromRole="LikeDB" ToRole="Author" />
+          <NavigationProperty Name="Paper" Relationship="AuthorDBModel.L0" FromRole="LikeDB" ToRole="Paper" />
+        </EntityType>
+        <Association Name="L1">
+          <End Type="AuthorDBModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="AuthorDBModel.LikeDB" Role="LikeDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LikeDB">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="L0">
+          <End Type="AuthorDBModel.Paper" Role="Paper" Multiplicity="0..1" />
+          <End Type="AuthorDBModel.LikeDB" Role="LikeDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="LikeDB">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CommentDB">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperId" Type="Int32" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="ActionDate" Type="DateTime" Precision="0" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Author" Relationship="AuthorDBModel.C1" FromRole="CommentDB" ToRole="Author" />
+          <NavigationProperty Name="Paper" Relationship="AuthorDBModel.C0" FromRole="CommentDB" ToRole="Paper" />
+        </EntityType>
+        <Association Name="C1">
+          <End Type="AuthorDBModel.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="AuthorDBModel.CommentDB" Role="CommentDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommentDB">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C0">
+          <End Type="AuthorDBModel.Paper" Role="Paper" Multiplicity="0..1" />
+          <End Type="AuthorDBModel.CommentDB" Role="CommentDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="CommentDB">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AuthorDBModelStoreContainer" CdmEntityContainer="DBModels">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="AuthorDBModel.Author">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Passward" ColumnName="Passward" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Papers">
+            <EntityTypeMapping TypeName="AuthorDBModel.Paper">
+              <MappingFragment StoreEntitySet="Paper">
+                <ScalarProperty Name="PaperFile" ColumnName="PaperFile" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="PublisherId" ColumnName="PublisherId" />
+                <ScalarProperty Name="PaperName" ColumnName="PaperName" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participates">
+            <EntityTypeMapping TypeName="AuthorDBModel.Participate">
+              <MappingFragment StoreEntitySet="Participate">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeDBs">
+            <EntityTypeMapping TypeName="AuthorDBModel.LikeDB">
+              <MappingFragment StoreEntitySet="LikeDB">
+                <ScalarProperty Name="LikeP" ColumnName="LikeP" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="AId" ColumnName="AId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentDBs">
+            <EntityTypeMapping TypeName="AuthorDBModel.CommentDB">
+              <MappingFragment StoreEntitySet="CommentDB">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="AId" ColumnName="AId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

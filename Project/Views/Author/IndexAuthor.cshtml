@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Project.Models.Author>
+
+@{
+
+    ViewBag.Title = "Authors";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="table-container">
+        <table class="keywords">
+            <thead>
+                <tr>
+                    <th><span>Images</span></th>
+                    <th><span>IDs</span></th>
+                    <th><span>Names</span></th>
+                    <th><span>Mobiles</span></th>
+                    <th><span>Universities</span></th>
+                    <th><span>Departments</span></th>
+                    <th><span>Emails</span></th>
+                    <th><span>Passwords</span></th>
+                    <th><span>Edit</span></th>
+                    <th><span>Delete</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="avatar-flip"><img src="@Url.Content(item.ImagePath)" width="70" height="70" style="float :right" /></td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.Id)</a>
+                    </td>
+
+                    <td class="Name" onclick="location.href='@Url.Action("ViewPage", "Author", new {id = item.Id})'">
+                        <a>@Html.DisplayFor(modelItem => item.FName) @Html.DisplayFor(modelItem => item.LName)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.Mobile)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.University)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.Department)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.Email)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.Passward)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.ActionLink("Delete", "DeleteAuthorAdmin", new { id = item.Id })</a>
+                    </td>
+
+                </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
+
+               

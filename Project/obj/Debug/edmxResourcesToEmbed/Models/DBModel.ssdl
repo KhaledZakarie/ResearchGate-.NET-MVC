@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AuthorDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="bigint" />
+    <Property Name="University" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Passward" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CommentDB">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperId" Type="int" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="ActionDate" Type="date" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LikeDB">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperId" Type="int" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="ActionDate" Type="date" />
+    <Property Name="LikeP" Type="bit" />
+  </EntityType>
+  <EntityType Name="Paper">
+    <Key>
+      <PropertyRef Name="PaperId" />
+    </Key>
+    <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PublisherId" Type="int" />
+    <Property Name="PublishDate" Type="date" />
+    <Property Name="PaperFile" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Participate">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperId" Type="int" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="StartDate" Type="date" />
+  </EntityType>
+  <Association Name="a1">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Paper">
+        <PropertyRef Name="PublisherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C0">
+    <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+    <End Role="CommentDB" Type="Self.CommentDB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paper">
+        <PropertyRef Name="PaperId" />
+      </Principal>
+      <Dependent Role="CommentDB">
+        <PropertyRef Name="PaperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C1">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="CommentDB" Type="Self.CommentDB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CommentDB">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="L0">
+    <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+    <End Role="LikeDB" Type="Self.LikeDB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paper">
+        <PropertyRef Name="PaperId" />
+      </Principal>
+      <Dependent Role="LikeDB">
+        <PropertyRef Name="PaperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="L1">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="LikeDB" Type="Self.LikeDB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LikeDB">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="P0">
+    <End Role="Paper" Type="Self.Paper" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paper">
+        <PropertyRef Name="PaperId" />
+      </Principal>
+      <Dependent Role="Participate">
+        <PropertyRef Name="PaperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="P1">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+    <End Role="Participate" Type="Self.Participate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participate">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AuthorDBModelStoreContainer">
+    <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommentDB" EntityType="Self.CommentDB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LikeDB" EntityType="Self.LikeDB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paper" EntityType="Self.Paper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participate" EntityType="Self.Participate" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="a1" Association="Self.a1">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Paper" EntitySet="Paper" />
+    </AssociationSet>
+    <AssociationSet Name="C0" Association="Self.C0">
+      <End Role="Paper" EntitySet="Paper" />
+      <End Role="CommentDB" EntitySet="CommentDB" />
+    </AssociationSet>
+    <AssociationSet Name="C1" Association="Self.C1">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="CommentDB" EntitySet="CommentDB" />
+    </AssociationSet>
+    <AssociationSet Name="L0" Association="Self.L0">
+      <End Role="Paper" EntitySet="Paper" />
+      <End Role="LikeDB" EntitySet="LikeDB" />
+    </AssociationSet>
+    <AssociationSet Name="L1" Association="Self.L1">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="LikeDB" EntitySet="LikeDB" />
+    </AssociationSet>
+    <AssociationSet Name="P0" Association="Self.P0">
+      <End Role="Paper" EntitySet="Paper" />
+      <End Role="Participate" EntitySet="Participate" />
+    </AssociationSet>
+    <AssociationSet Name="P1" Association="Self.P1">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Participate" EntitySet="Participate" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

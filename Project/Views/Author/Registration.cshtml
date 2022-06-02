@@ -1,0 +1,57 @@
+﻿
+@model Project.Models.Author
+
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+
+
+@using (Html.BeginForm("Registration", "Author", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+    <div class="pagebg">
+
+        <div class="signupcontain">
+            <div class="signup">
+                <h1>NEW ACCOUNT</h1>
+                <p>- please enter your data -</p>
+            </div>
+            <label class="label-success">@ViewBag.SuccessMessage</label>
+            <label class="label-success">@ViewBag.DuplicateMessage</label>
+            <div class="signupform">
+                <form>
+
+
+                    @Html.EditorFor(model => model.FName, new { htmlAttributes = new { placeholder = "First Name", @required = "required" } })
+
+
+                    @Html.EditorFor(model => model.LName, new { htmlAttributes = new { placeholder = "Last Name", @required = "required" } })<br>
+
+                    @Html.EditorFor(model => model.Passward, new { htmlAttributes = new { placeholder = "New Password", @required = "required" } })
+
+                    @Html.EditorFor(model => model.ConfirmPassward, new { htmlAttributes = new { placeholder = "Re-New Password", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassward, "")<br>
+
+                    @Html.EditorFor(model => model.University, new { htmlAttributes = new { placeholder = "University", @required = "required" } })
+
+                    @Html.EditorFor(model => model.Department, new { htmlAttributes = new { placeholder = "Department", @required = "required" } })<br>
+
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email", @required = "required" } })
+
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { placeholder = "Phone Number", @required = "required" } })<br>
+
+                    @Html.LabelFor(model => model.ImagePath)
+                    <input type="file" name="ImageFile" required>
+
+                    <button class="signup-btn">Sign Up</button><br>
+                    @Html.ActionLink("already have an account?", "Login", "Author")
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+}

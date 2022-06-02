@@ -1,0 +1,80 @@
+﻿
+@model Project.ViewModels.AuthorPapers
+
+@{
+    /**/
+
+
+    ViewBag.Title = "Paper Tag";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="main">
+            <div class="container">
+                <div class="dlt-container">
+
+                    <div class="dlt-info">
+
+                        <h2 style="color:white;">Enter The Participants of this Paper</h2>
+                        <div>
+                            @Html.ActionLink("There are no Participants", "LogIn", "Author")
+                        </div><br />
+                        <hr /><br />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group" hidden>
+                            @Html.LabelFor(model => model.participate.PId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.participate.PId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.participate.PId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" hidden>
+                            @Html.LabelFor(model => model.participate.PaperId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.participate.PaperId, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.PaperId } })
+                                @Html.ValidationMessageFor(model => model.participate.PaperId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.participate.AuthorId, new SelectList(Model.AuthorsList, "Id", "Email"), "Select The Participant From The Drop ", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.participate.AuthorId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.participate.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.participate.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.participate.StartDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br /><br />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn-dlt" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+
+ 
+</body>
+</html>

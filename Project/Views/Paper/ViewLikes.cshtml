@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Project.Models.LikeDB>
+
+@{
+
+    ViewBag.Title = "Likes";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="table-container">
+        <table class="keywords">
+            <tr style="background-color:black;color:white;">
+                <th><span></span></th>
+                <th><span>Likes</span></th>
+                <th><span></span></th>
+                <th><span></span></th>
+            </tr>
+            <tr>
+                <th>
+                    <span>Images</span>
+                </th>
+                <th>
+                    <span>Names</span>
+                </th>
+                <th>
+                    <span>Dates</span>
+                </th>
+                <th><span></span></th>
+            </tr>
+
+            @foreach (var item in Model.Where(k => k.LikeP.Equals(true)))
+            {
+            <tr>
+                
+                <td class="avatar-flip"><img src="@Url.Content(item.Author.ImagePath)" width="70" height="70" style="float :right" /></td>
+                
+                <td class="Name" onclick="location.href='@Url.Action("ViewPage", "Author", new {id = item.AuthorId})'">
+                    @Html.DisplayFor(modelItem => item.Author.FName) @Html.DisplayFor(modelItem => item.Author.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActionDate)
+                </td>
+
+                <td></td>
+            </tr>
+            }
+
+        </table>
+
+        <table class="keywords">
+            <tr  style="background-color:black;color:white;">
+                <th><span></span></th>
+                <th><span>DisLike</span></th>
+                <th><span></span></th>
+                <th><span></span></th>
+            </tr>
+            <tr>
+                <th>
+                    <span>Images</span>
+                </th>
+                <th >
+                    <span>Names</span>
+                </th>
+                <th>
+                    <span>Dates</span>
+                </th>
+
+                <th><span></span></th>
+            </tr>
+
+            @foreach (var item in Model.Where(k => k.LikeP.Equals(false)))
+            {
+            <tr>
+                
+                <td class="avatar-flip"><img src="@Url.Content(item.Author.ImagePath)" width="70" height="70" style="float :right" /></td>
+                
+                <td class="Name" onclick="location.href='@Url.Action("ViewPage", "Author", new {id = item.AuthorId})'">
+                    @Html.DisplayFor(modelItem => item.Author.FName) @Html.DisplayFor(modelItem => item.Author.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActionDate)
+                </td>
+                <td></td>
+            </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

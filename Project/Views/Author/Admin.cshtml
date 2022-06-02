@@ -1,0 +1,17 @@
+﻿
+@{
+
+    ViewBag.Title = "Admin";
+}
+
+<section class="main">
+    <div>
+        <div class="main-info">
+            Control Author & Paper
+        </div>
+        <br />
+        @Html.ActionLink("List Of Authors", "IndexAuthor", "Author", new { @class = "btn-lg" })<br /><br /><br />
+        @Html.ActionLink("List Of Paper", "IndexPaper", "Author", new { @class = "btn-lg" })
+    </div>
+
+</section>

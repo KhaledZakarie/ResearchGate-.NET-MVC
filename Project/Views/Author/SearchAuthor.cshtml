@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Project.Models.Author>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+
+<div class="table-container">
+    <table class="keywords">
+        <thead>
+            <tr>
+                <th><span>Images</span></th>
+                <th><span>Names</span></th>
+                <th><span>Universities</span></th>
+                <th><span>Emails</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="6" style="color:red">
+                        No Match Any Author
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="avatar-flip"><img src="@Url.Content(item.ImagePath)" width="70" height="70" style="float :right" /></td>
+                        <td class="Name" onclick="location.href='@Url.Action("ViewPage", "Author", new {id = item.Id})'"><a>@item.FName @item.LName</a></td>
+                        <td><a>@item.University</a></td>
+                        <td><a>@item.Email</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

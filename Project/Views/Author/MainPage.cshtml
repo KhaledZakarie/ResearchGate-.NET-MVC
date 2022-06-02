@@ -1,0 +1,31 @@
+﻿
+@model Project.Models.Author
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="main">
+    <div class="container">
+        <div class="avatar-flip">
+            <img src="@Url.Content(Model.ImagePath)" width="200" height="200" />
+        </div>
+        <div class="profile-info">
+            <h2>@Html.DisplayFor(model => model.FName) @Html.DisplayFor(model => model.LName)</h2>
+            <p>Mobile Number: @Html.DisplayFor(model => model.Mobile)</p>
+            <p>University: @Html.DisplayFor(model => model.University)</p>
+            <p>Department: @Html.DisplayFor(model => model.Department)</p>
+            <p>Email: @Html.DisplayFor(model => model.Email)</p>
+            <h6>ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ</h6>
+
+        </div>
+        <div>
+            <button type="button" class="paper-btn" href="#" onclick="location.href='@Url.Action("Edit", "Author", new {id = Model.Id })'">Edit</button>
+            <button type="button" class="paper-btn" href="#"onclick="location.href='@Url.Action("YourPaperDelete", "Paper", new {id = Model.Id })'">View Papers</button>
+            <button type="button" class="paper-btn" href="#"onclick="location.href='@Url.Action("PaperLoad", "Paper", new {id = Model.Id })'">Upload Paper</button>
+            <button type="button" class="paper-btn" href="#"onclick="location.href='@Url.Action("DeleteMentions", "Paper", new {id = Model.Id })'">Tags</button>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------- ViewPage CSS*/
+.like-div {
+    color: white;
+    background-color: rgba(0, 139, 139, 0.205);
+    margin: 20px auto;
+    width: 50%;
+    padding: 20px;
+}
+.comment-div input{
+    border-radius: 20px;
+    border-width: 100%;
+    padding: 5px;
+    border: 0;
+    outline: none;
+    width: 400px;
+    opacity: 70%;
+    margin: 10px;
+}
+  /* ---------------------------------------------------------- End of ViewPage CSS*/

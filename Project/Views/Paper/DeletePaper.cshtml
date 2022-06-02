@@ -1,0 +1,35 @@
+﻿@model Project.Models.Paper
+@{
+
+    ViewBag.Title = "Delete Paper";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="dlt-container">
+                <div class="dlt-paper-info">
+                    <h1>Paper Name: @Html.DisplayFor(model => model.PaperName)</h1>
+                    <h1 onclick="location.href='@Url.Action("Download", "Paper", new {Name = Model.PaperFile })'">
+                        Publish Date: @Html.DisplayFor(model => model.PublishDate)
+                    </h1>
+                    <h1>ــــــــــــــــــــــــــــــــــــــــــــــ</h1>
+                </div>
+                <div class="dlt-info">
+                    <h2 style="color:white;">Are you sure you want to delete the paper ?</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit" value="Delete" class="btn-dlt" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

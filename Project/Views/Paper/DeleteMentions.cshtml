@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<Project.Models.Participate>
+
+@{
+
+    ViewBag.Title = "Tags";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<body>
+    <div class="table-container">
+        <table class="keywords">
+            <thead>
+                <tr>
+                    <th><span>Paper</span></th>
+                    <th><span>Comments</span></th>
+                    <th><span>Likes</span></th>
+                    <th><span>Details</span></th>
+                    <th><span>Tag Date</span></th>
+                    <th><span>Delete Tag</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="Name" onclick="location.href='@Url.Action("Download", "Paper", new {Name = item.Paper.PaperFile })'">
+                            <a>@Html.DisplayFor(modelItem => item.Paper.PaperName)</a>
+                        </td>
+
+                        <td>
+                            <a>@Html.ActionLink("View Comments", "ViewComment", new { id = item.PaperId })</a>
+                        </td>
+
+                        <td>
+                            <a>@Html.ActionLink("View Likes", "ViewLikes", new { id = item.PaperId })</a>
+                        </td>
+
+                        <td>
+                            <a>@Html.ActionLink("Details", "Details", new { author = item.Paper.PublisherId, paper = item.PaperId })</a>
+                        </td>
+
+                        <td>
+                            <a>@Html.DisplayFor(modelItem => item.StartDate)</a>
+                        </td>
+
+                        <td>
+                            <a>@Html.ActionLink("Delete", "DeleteTag", "Paper", new { id = item.PId }, null)</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

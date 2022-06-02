@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Project.Models.Paper>
+
+@{
+
+    ViewBag.Title = "Papers";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<body>
+    <div class="table-container">
+        <table class="keywords">
+            <thead>
+                <tr>
+                    <th><span>Paper IDs</span></th>
+                    <th><span>Paper</span></th>
+                    <th><span>Publisher Id</span></th>
+                    <th><span>Publish Date</span></th>
+                    <th><span>Delete Papers</span></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.PaperId)</a>
+                    </td>
+
+                    <td class="Name" onclick="location.href='@Url.Action("Download", "Paper", new {Name = item.PaperFile })'">
+                        <a>@Html.DisplayFor(modelItem => item.PaperName)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.PublisherId)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.DisplayFor(modelItem => item.PublishDate)</a>
+                    </td>
+
+                    <td>
+                        <a>@Html.ActionLink("Delete", "DeletePaperAdmin", "Author", new { id = item.PaperId }, null)</a>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

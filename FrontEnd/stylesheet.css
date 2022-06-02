@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: 'Poppins','sans-serif';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+:root {
+    --main-colour: darkcyan;
+  }
+/*------- Header Styling -------*/
+header{
+    background-color: darkcyan;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 100px; 
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+ 
+}
+header a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+header a:visited{
+    color: white;
+}
+header a:hover{
+    color: rgb(255, 255, 255);
+}
+.logo{
+    margin-right: 50px;
+}
+.searcBox{
+    background: white;
+    border-radius: 20px;
+    width: 500px;
+    padding: 0 15px;
+}
+.searcBox input{
+    border-radius: 20px;
+    border-width: 100%;
+    padding: 5px;
+    border: 0;
+    outline: none;
+    width: 400px;
+    opacity: 70%;
+}
+.searcBox img{
+    width: 24px;
+    opacity: 80%;
+}
+/*---------------------*/
+
+.navigation a{
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 30px;
+}
+
+.main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: url(imgs/bg\ 2.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 115px;
+    justify-content: left;
+}
+
+.main-info{
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    margin-left: 100px;
+    margin-top: 60px;
+    font-size: 60px;
+    
+}
+
+
+.btn-lg{
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(48, 121, 124, 0.658);
+    color: white;
+    border-width: 0ch;
+    border-radius: 10px;
+    width: 300px;
+    border-color: none;
+    margin-top: 20px;
+    margin-left: 105px;
+}
+
+.btn-lg:hover{
+    cursor: pointer;
+    font-size: 20px;
+    background-color: rgba(48, 121, 124, 1);
+    color: white;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+
+}
+
+.second-body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-color: rgb(185, 185, 185);
+}
+
+/*-------- Login Page Styling --------*/
+.pagebg{
+    width: 100%;
+    min-height: 100vh;
+    background: url(imgs/bg\ 2.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.signupcontain{
+    width: 50%;
+    height: 80%;
+    padding-top:20px;
+    margin-left: 360px;
+    margin-top: 50px;
+    text-align: center;
+    position: relative;
+    background-color: rgba(187, 187, 187, 0.479);
+    margin-top: 100px;
+    position: fixed;
+    border-radius: 10px;
+}
+.signupform{
+    margin-top: 15px;
+}
+.signupform a{
+    color: rgba(0, 0, 0, 0.582);
+}
+.signupform a:hover{
+    color: black;
+}
+.signupform input{
+    color: white;
+    background-color: rgba(255, 255, 255, 0.377);
+    border-radius: 6px;
+    border-color: none;
+    border-width: 0ch;
+    height: 30px;
+    width: 280px;
+    margin: 20px 25px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.10);
+}
+.signupform input:hover{
+    cursor: pointer;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.637);
+}
+.signup{
+    text-align: center;
+}
+.signup h1{
+    color: white;
+    margin: 0;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 60px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+.signup p{
+    color: white;
+    margin: 0;
+    font-size: 20px;
+}
+.signup-btn{
+    border-width: 0;
+    background-color: rgba(48, 121, 124, 0.658);
+    color: white;
+    border-color: none;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 20px;
+}
+.signup-btn:hover{
+    cursor: pointer;
+    background-color: rgba(48, 121, 124, 1);
+    color: white;
+}
+
+/*---------------------*/
+
+
+.logincontain{
+    max-width: 1920px;
+    width: 50%;
+    height: 80%;
+    padding-top: 70px;
+    margin-left: 360px;
+    margin-top: 0px;
+    text-align: center;
+    background-color: rgba(187, 187, 187, 0.479);
+    margin-top: 100px;
+    position: fixed;
+    border-radius: 10px;
+}
+
+.login{
+    text-align: center;
+}
+.login h1{
+    color: white;
+    margin: 0;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 60px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+.login p{
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.login-btn{
+    border-width: 0;
+    background-color: rgba(48, 121, 124, 0.658);
+    color: white;
+    border-color: none;
+    width: 150px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.login-btn:hover{
+    cursor: pointer;
+    background-color: rgba(48, 121, 124, 1);
+    color: white
+}
+
+
+.loginform{
+    margin-top: 30px;
+}
+.loginform a{
+    color: rgba(0, 0, 0, 0.582);
+}
+.loginform a:hover{
+    cursor: pointer;
+    color: black;
+}
+.loginform input{
+    background-color: rgba(255, 255, 255, 0.377);
+    color: white;
+    border-radius: 6px;
+    border-color: none;
+    border-width: 0ch;
+    height: 40px;
+    width: 300px;
+    margin: 10px 25px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.10);
+}
+.loginform input:hover{
+    cursor: pointer;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.637);
+}
+
+
+
+
+
+/* ---------------------------------------------------------- ProfilePage CSS */
+.main-bg{
+    background: url(imgs/bg.jpg);
+    margin: 0;
+    padding: 0;
+
+}
+.container {
+    width: 70%;
+    height: 100%;
+    padding-top: 15px;
+    padding-bottom :20px;
+    margin-left: 230px;
+    margin-top: -70px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.075);
+    background-color: rgba(187, 187, 187, 0.479);
+    position: inherit;
+    border-radius: 10px;
+
+
+}
+
+.avatar-flip {
+    border-radius: 100px;
+    height: 200px;
+    width: 200px;
+    margin: 10px auto;
+    position: relative;
+}
+
+.avatar-flip img {
+    position: absolute;
+    margin-top: 0px;
+    left: 0;
+    border-radius: 100px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+}
+.avatar-flip img:hover {
+    cursor: pointer;
+    width: 480px;
+    height: 480px;
+    left: -150px;
+    border-radius: 400px;
+
+}
+
+.profile-info{
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.profile-info h2{
+    font-size: 40px;
+    margin: 0px;
+    box-shadow: 0 0 10px 0 rgba(97, 97, 97, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+    height: 65px;
+
+}
+.profile-info h2:hover{
+    font-size: 42px;
+    margin-bottom: 0px;
+}
+.profile-info p{
+    /*
+    border-style: solid;
+    background-color: rgba(151, 151, 151, 0.377);
+    text-align: center;
+    width: 400px;
+    border-width: 0.5px;
+    border-color: rgba(255, 255, 255, 0.377);
+    border-radius: 6px;
+    */
+    font-size: 17px;
+    margin: 20px 335px;
+}
+
+
+.paper-btn{
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(48, 121, 124, 0.658);
+    color: white;
+    border-width: 0ch;
+    border-radius: 10px;
+    width: 150px;
+    border-color: none;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.paper-btn:hover{
+    cursor: pointer;
+    font-size: 15px;
+    background-color: var(--main-colour);
+    color: white;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+
+}
+
+/* ---------------------------------------------------------- End of ProfilePage CSS*/
+
+
+
+
+/* ---------------------------------------------------------- Table CSS*/
+
+
+input, textarea { 
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none; 
+}
+
+
+h1 { 
+  font-family: 'Amarante', Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 3.6em;
+  line-height: 1.7em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+/** page structure **/
+.table-container {
+  display: block;
+  height: auto;
+  width: 850px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 70px 0px;
+}
+
+.keywords {
+  margin: 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+
+.keywords thead {
+  cursor: pointer;
+  background: #c9dff0;
+}
+.keywords thead tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+.keywords thead tr th span { 
+  padding-right: 20px;
+}
+
+.keywords thead tr th.headerSortUp, .keywords thead tr th.headerSortDown {
+  background: #acc8dd;
+}
+
+.keywords tbody tr { 
+  color: #555;
+}
+.keywords tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+.keywords tbody tr td.Name {
+    text-align: center;
+}
+.keywords tbody tr td.Name a{
+    text-decoration: none;
+    color: black;
+}
+.keywords tbody tr td.Name a:hover{
+    font-size: 20.5px;
+}
+/* ---------------------------------------------------------- End of Table CSS*/
+
+/* ---------------------------------------------------------- DeletePage CSS*/
+.dlt-container{
+    margin: 140px auto;
+}
+
+.btn-dlt{
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(48, 121, 124, 0.658);
+    color: white;
+    border-width: 0ch;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    border-color: none;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.btn-dlt:hover{
+    cursor: pointer;
+    font-size: 14px;
+    background-color: rgba(48, 121, 124, 1);
+    box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.20);
+
+}
+
+.dlt-info{
+    text-align: center;
+    margin: 50px auto;
+}
+
+.dlt-paper-info{
+    color: white;
+}
+
+.dlt-paper-info h1{
+    font-size: 30px;
+}
+/* ---------------------------------------------------------- End of DeletePage CSS*/
+
+
+/* ---------------------------------------------------------- ViewPage CSS*/
+.left{
+    text-align: left;
+    float: left;
+    margin-right: 100px;
+}
+.right{
+    text-align: left;
+}
+.info-container{
+    display: fixed;
+    text-align: center;
+    margin: 0px auto;
+    width: 50%;
+    padding: 100px;
+}
+.info-legend{
+    text-align: center;
+    padding-right:25px;
+    padding-top: 100px;
+}
+.paper-info{
+    margin: 0px auto;
+}
+.like-radio{
+    float: left;
+    margin: 10px 10%;
+}   
+.like-container{
+    width: 50%;
+    margin: 20px auto;
+}
+
+
+.view-table-container {
+    display: block;
+    color: white;
+    height: auto;
+    width: 850px;
+    margin: 0 auto;
+    padding: 100px 17px;
+}
+.view-table-keywords {
+    color: white;
+    margin: 0 auto;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+  .view-table-keywords thead {
+    cursor: pointer;
+    background: #c9dff0;
+  }
+  .view-table-keywords thead tr th { 
+    font-weight: bold;
+    padding: 12px 30px;
+    padding-left: 42px;
+  }
+  .view-table-keywords thead tr th span { 
+    padding-right: 20px;
+  }
+  .view-table-keywords tbody tr td {
+    text-align: center;
+    padding: 15px 10px;
+  }
+  .view-table-keywords tbody tr td.Name {
+      text-align: center;
+  }
+  .view-table-keywords tbody tr td.Name a{
+          text-decoration: none;
+  }
+  .view-table-keywords tbody tr td.Name a:hover{
+      font-size: 20.5px;
+  }
+  /* ---------------------------------------------------------- End of ViewPage CSS*/
+
+/* ---------------------------------------------------------- ViewPage CSS*/
+.like-div {
+    color: white;
+    background-color: rgba(0, 139, 139, 0.205);
+    margin: 20px auto;
+    width: 50%;
+    padding: 20px;
+}
+.comment-div input{
+    border-radius: 20px;
+    border-width: 100%;
+    padding: 5px;
+    border: 0;
+    outline: none;
+    width: 400px;
+    opacity: 70%;
+    margin: 10px;
+}
+  /* ---------------------------------------------------------- End of ViewPage CSS*/

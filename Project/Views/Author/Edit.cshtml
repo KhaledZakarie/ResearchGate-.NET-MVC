@@ -1,0 +1,64 @@
+﻿
+@model Project.Models.Author
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+    @Html.HiddenFor(model => model.Id)
+
+
+    <div class="pagebg">
+
+        <div class="editcontain">
+            <div class="edit">
+                <h1>EDIT YOUR DATA</h1>
+                <p>- please edit your data and confirm password -</p>
+            </div>
+            <div class="editform">
+                <form>
+
+                    @Html.LabelFor(model => model.FName)
+                    @Html.EditorFor(model => model.FName, new { htmlAttributes = new { placeholder = "First Name", @required = "required" } })
+
+                    @Html.LabelFor(model => model.LName)
+                    @Html.EditorFor(model => model.LName, new { htmlAttributes = new { placeholder = "Last Namr", @required = "required" } })<br>
+
+                    Passward
+                    @Html.EditorFor(model => model.Passward, new { htmlAttributes = new { placeholder = "Password", @required = "required" } })
+
+                    Confirm Passward
+                    @Html.EditorFor(model => model.ConfirmPassward, new { htmlAttributes = new { placeholder = "Confirm Password", @required = "required" } })<br>
+
+                    @Html.LabelFor(model => model.University)
+                    @Html.EditorFor(model => model.University, new { htmlAttributes = new { placeholder = "University", @required = "required" } })
+
+                    @Html.LabelFor(model => model.Department)
+                    @Html.EditorFor(model => model.Department, new { htmlAttributes = new { placeholder = "Department", @required = "required" } })<br>
+
+                    @Html.LabelFor(model => model.Email)
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email", @required = "required" } })
+
+                    @Html.LabelFor(model => model.Mobile)
+                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { placeholder = "Phone Number", @required = "required" } })<br>
+
+                    <div hidden>
+                        @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <button class="signup-btn">Save</button><br />
+                    <img src="@Url.Content(Model.ImagePath)" width="100" height="100" style="float :inherit" />
+                    <div style="margin-left: 10px;">@Html.ActionLink("Edit Your Image", "EditImage", new { id = Model.Id })</div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+}
+

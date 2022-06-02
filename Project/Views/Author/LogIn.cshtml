@@ -1,0 +1,51 @@
+﻿
+@model Project.Models.Author
+
+
+@{
+
+    ViewBag.Title = "Login";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+
+
+    <div class="pagebg">
+        <div class="loginpage">
+            <div class="logincontain">
+                <div class="login">
+                    <h1>Welcome,<br>Login</h1>
+                    <p>- please enter your data -</p>
+                </div>
+                <div class="loginform">
+                    <form>
+                        @Html.DisplayFor(model => model.LoginErrorMsg, "")<br />
+
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Email, "")
+
+
+                        @Html.EditorFor(model => model.Passward, new { htmlAttributes = new { placeholder = "Password", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Passward, "")
+
+
+
+                        <br /><button class="login-btn">Login</button><br>
+                        @Html.ActionLink("don't have account?", "Registration", "Author")
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
